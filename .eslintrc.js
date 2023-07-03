@@ -17,8 +17,7 @@ module.exports = {
   ignorePatterns: [
     ".eslintrc.js",
     "jest.config.js",
-    "open-api-spec/*",
-    ".husky/*",
+    "template/*",
   ],
   rules: {
     "@typescript-eslint/interface-name-prefix": "off",

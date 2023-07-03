@@ -1,0 +1,25 @@
+{
+  "./": [
+    ".env",
+    ".eslintrc.js",
+    ".gitignore",
+    ".npmrc",
+    ".prettierrc",
+    "jest.config.js",
+    "README.md",
+    "tsconfig.json"
+  ],
+  "src/generator/helper": [
+    "helper.file-writer.ts"
+  ],
+  "src/generator/component": [
+    "hello-world.ts",
+    "hello-world.test.ts"
+  ],
+  "src/logger": [
+    "logger.interface.ts"
+  ],
+  "prisma": [
+    "schema.prisma"
+  ]
+}

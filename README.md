@@ -6,15 +6,18 @@ Creates very basic `prisma generator`, ready to run and to be extended.
 
 ```
 <project root>
-└──<example-generator>
-    └──src
-        ├── bin.ts
-        └── generator            
-             ├── helper
-             ├    ├── helper.file-writer.ts
-             └── generator.ts            
-        ├── package.json
-        └── README.md
+└──src
+    ├── bin.ts
+    └── generator
+         ├── component
+         ├    ├── hello-world.test.ts
+         ├    ├── hello-world.ts
+         ├── helper
+         ├    ├── helper.file-writer.ts
+         └── generator.ts            
+    ├── package.json
+    ...
+    └── README.md
 ```
 
 ## Usage
@@ -27,7 +30,7 @@ npx ts-node src/bin.ts
 npx tsx src/bin.ts 
 ```
 
-Now, set up your `prisma.schema` and add your custom generator.
+Now, set up `prisma.schema` and add custom generator.
 This way it can be executed when running `npx prisma generate`.
 
 
@@ -70,30 +73,35 @@ generator prisma-generator-example {
 }
 ```
 
-## Usage of custom generator
+## Custom generator usage
 
-Run `npx prisma generate` to execute `prisma-generator-example`.
+Run `npx prisma generate`
 
-Output:
 
 ```
-✔ Generated Prisma Client (4.16.2 | library) to .\node_modules\@prisma\client in 71ms
+prisma:info Hello World from prettyName
+prisma:info Generated datamodel under: data-model.json
 
-✔ Generated Example Generator (1.0.0) to .\prisma\example-generator in 36ms
+✔ Generated Prisma Client (4.16.2 | library) to .\node_modules\@prisma\client in 82ms
 
+✔ Generated prettyName (1.0.0) to .\prisma\prisma-generator-example in 39ms
 You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
 ```
 
-## Developing your custom generator
+## Custom generator development
 
-To get started right away, you can use the default helper, or create your own.
+To get started right away, use the default component, or create new one.
 
-### Helpers
+### Component
 
-From `helper.file-writer.ts` you can import `FileWriter` helper and use it in your generator.
-It offers two methods.
+There is a very basic hello world component, together with its unit test, that is already plugged into the generator.
+See [src/generator/component/hello-world.ts](`hello-world.ts`).
 
-`saveFile()` - to save any file
+### Helper
+
+`FileWriter` class can be imported from `helper.file-writer.ts`, it has two methods.
+
+`saveFile()` - saves any file
 ```ts
 import FileWriter from "./helper/helper.file-writer";
 
@@ -101,10 +109,26 @@ FileWriter.saveFile("foo.txt", `foo`);
 ```
 
 
-`saveTypescriptFile()` - to save and format TS file 
+`saveTypescriptFile()` - saves and formats TS file 
 
 ```ts
 import FileWriter from "./helper/helper.file-writer";
 
 FileWriter.saveTypescriptFile("foo.ts", `const foo="foo"; console.log(foo);`);
+```
+
+### Tests
+
+`npx jest`
+
+```
+ PASS  src/generator/component/hello-world.test.ts
+  Hello World
+    √ hi() should use prisma logger to generate output (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        2.521 s, estimated 3 s
+Ran all test suites.
 ```

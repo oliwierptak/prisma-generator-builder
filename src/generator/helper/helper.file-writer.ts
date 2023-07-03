@@ -36,9 +36,8 @@ class FileWriter {
   }
 
   static copyTemplateFile(fileName: string, optionalTargetPath = ""): void {
-    //const root = path.resolve("./");
-    const sourcePath = "./template/" + fileName;
-    const targetPath = optionalTargetPath + "/" + fileName;
+    const sourcePath = path.join("./template", fileName);
+    const targetPath = path.join(optionalTargetPath, fileName);
 
     FileWriter.createPath(targetPath);
 

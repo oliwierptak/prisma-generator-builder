@@ -1,8 +1,7 @@
 import { generatorHandler, GeneratorOptions } from "@prisma/generator-helper";
-import * as path from "path";
 import { logger } from "@prisma/internals";
 import { version } from "../../package.json";
-import FileWriter from "./helper/helper.file-writer";
+import { HelloWorld } from "./component/hello-world";
 
 generatorHandler({
   onManifest: () => ({
@@ -14,15 +13,13 @@ generatorHandler({
     defaultOutput: "./prisma-generator-builder",
   }),
   onGenerate: async (options: GeneratorOptions) => {
-    const filename = path.join(
-      options.generator.output?.value || "./prisma-generator-builder",
-      "data-model.json"
+    const helloWorld = HelloWorld.instance(logger);
+
+    helloWorld.hi("prisma-generator-builder");
+
+    helloWorld.debugDataModel(
+      options.dmmf.datamodel,
+      options.generator.output?.value || "./prisma-generator-builder"
     );
-
-    logger.info("Executing " + options.generator.name);
-
-    FileWriter.saveFile(filename, JSON.stringify(options.dmmf.datamodel));
-
-    logger.info("Generated datamodel under: data-model.json");
   },
 });

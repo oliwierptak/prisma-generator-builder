@@ -35,6 +35,7 @@ export default function getPackageJsonTemplate(
     "eslint-plugin-jest": "*",
     "eslint-plugin-prettier": "*",
     "jest": "*",
+    "jest-mock-extended": "*",
     "prettier": "*",
     "prisma": "*",
     "ts-jest": "*",
