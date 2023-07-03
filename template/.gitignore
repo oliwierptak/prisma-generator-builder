@@ -1,0 +1,9 @@
+.idea
+.npmrc
+.env
+.DS_Store
+dist/
+coverage/
+node_modules/
+prisma/dev.sqlite
+prisma/dev.sqlite-journal

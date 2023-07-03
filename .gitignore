@@ -1,0 +1,13 @@
+.idea
+.npmrc
+.env
+.DS_Store
+dist/
+build/
+coverage/
+node_modules/
+database/prisma/dev.sqlite
+database/prisma/dev.sqlite-journal
+prisma/dev.sqlite
+prisma/dev.sqlite-journal
+prisma/prisma-generator-builder/*
