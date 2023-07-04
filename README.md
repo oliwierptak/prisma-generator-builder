@@ -32,6 +32,11 @@ npx tsx src/bin.ts
 
 The default output folder is under `./build`.
 
+```
+cd ./build
+npm install
+```
+
 Now, set up `prisma.schema` and add custom generator.
 This way it can be executed when running `npx prisma generate`.
 
@@ -96,8 +101,10 @@ To get started right away, use the default component, or create new one.
 
 ### Component
 
-There is a very basic hello world component, together with its unit test, that is already plugged into the generator.
-See [src/generator/component/hello-world.ts](`hello-world.ts`).
+The generator uses very basic `HelloWorld` example component, 
+ensuring that prisma and custom generator logic are not mixed together. 
+This way it will be easier to migrate to future versions of prisma.
+See [generator.ts](src/generator/generator.ts) example.
 
 ### Helper
 
