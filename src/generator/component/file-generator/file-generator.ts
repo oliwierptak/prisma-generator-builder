@@ -2,13 +2,16 @@ import {
   AssociativeArray,
   GeneratorTemplateType,
   PackageJsonTemplateType,
+  ReadmeTemplateType,
 } from "../../../lib/types";
-import getGeneratorTemplate from "../../../../template/generator.template";
+import templateGetGeneratorTemplate from "../../../../template/generator.template";
 import FileWriter from "../../helper/helper.file-writer";
 import path from "path";
-import getPackageJsonTemplate from "../../../../template/package.json.template";
+import templateGetPackageJsonTemplate from "../../../../template/package.json.template";
 import { logger } from "@prisma/internals";
 import * as templateListFromJson from "../../../../template.json";
+import templateGetReadmeTemplate from "../../../../template/readme.md";
+import templateGetPrismaSchemaTemplate from "../../../../template/schema.prisma.template";
 
 export class FileGenerator {
   private readonly outputDirectoryRoot: string;
@@ -20,22 +23,22 @@ export class FileGenerator {
   generateGeneratorTs(template: GeneratorTemplateType): void {
     this.info("generator.ts");
 
-    const result = getGeneratorTemplate(template);
+    const data = templateGetGeneratorTemplate(template);
 
     FileWriter.saveTypescriptFile(
       path.join(this.outputDirectoryRoot, "src/generator/generator.ts"),
-      result
+      data
     );
   }
 
   generatePackageJson(template: PackageJsonTemplateType): void {
     this.info("package.json");
 
-    const result = getPackageJsonTemplate(template);
+    const data = templateGetPackageJsonTemplate(template);
 
     FileWriter.saveFile(
       path.join(this.outputDirectoryRoot, "package.json"),
-      result
+      data
     );
   }
 
@@ -49,6 +52,24 @@ import "./generator/generator";
 `
     );
   }
+  generateReadme(template: ReadmeTemplateType): void {
+    this.info("README.md");
+
+    const data = templateGetReadmeTemplate(template);
+
+    FileWriter.saveFile(path.join(this.outputDirectoryRoot, "README.md"), data);
+  }
+
+  generatePrismaSchema(template: GeneratorTemplateType): void {
+    this.info("prisma.schema");
+
+    const data = templateGetPrismaSchemaTemplate(template);
+
+    FileWriter.saveFile(
+      path.join(this.outputDirectoryRoot, "prisma/schema.prisma"),
+      data
+    );
+  }
 
   copyFiles(): void {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -57,8 +78,8 @@ import "./generator/generator";
 
     logger.info("Copying files...");
 
-    for (const [key, fileList] of Object.entries(filesToCopy)) {
-      const directory = path.join(this.outputDirectoryRoot, key);
+    for (const [location, fileList] of Object.entries(filesToCopy)) {
+      const directory = path.join(this.outputDirectoryRoot, location);
       fileList.forEach((file) => {
         logger.info(file);
 

@@ -1,6 +1,6 @@
 import { GeneratorTemplateType } from "../src/lib/types";
 
-export default function getGeneratorTemplate(
+export default function templateGetGeneratorTemplate(
   template: GeneratorTemplateType,
 ): string {
   return `import { generatorHandler, GeneratorOptions } from "@prisma/generator-helper";
@@ -20,11 +20,11 @@ generatorHandler({
   onGenerate: async (options: GeneratorOptions) => {
     const helloWorld = new HelloWorld();
 
-    helloWorld.hi("prisma-generator-builder");
+    helloWorld.hi("${template.provider}");
 
     helloWorld.debugDataModel(
       options.dmmf.datamodel,
-      options.generator.output?.value || "./prisma-generator-builder",
+      options.generator.output?.value || "./${template.provider}",
     );
   },
 });

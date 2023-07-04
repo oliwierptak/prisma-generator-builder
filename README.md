@@ -1,6 +1,12 @@
 # prisma-generator-builder
 
-Creates very basic `prisma generator`, ready to run and to be extended.
+Creates simple and ready to run `prisma generator` package with configured:
+
+- typescript
+- prisma
+- eslint
+- prettier
+- jest
 
 ### Folder structure
 
@@ -37,11 +43,11 @@ cd ./build
 npm install
 ```
 
-Now, set up `prisma.schema` and add custom generator.
-This way it can be executed when running `npx prisma generate`.
-
+See `README.md` in the generated `./build` folder to see how to easily setup `prisma.schema`.
 
 ### Schema setup
+
+A custom generator must be added to `prisma.schema` in order for it be executed with `npx prisma generate`.
 
 Depending on if you are using `ts-node` or `tsx`,
 and whenever you are using path aliases,
@@ -79,6 +85,8 @@ generator prisma-generator-example {
   output   = "./prisma-generator-example"
 }
 ```
+
+Note: These blocks are auto generated and placed in generated `README.md`.
 
 ## Custom generator usage
 
@@ -127,6 +135,8 @@ FileWriter.saveTypescriptFile("foo.ts", `const foo="foo"; console.log(foo);`);
 ```
 
 ### Tests
+
+Generated package comes together with pre-configured `jest`.
 
 `npx jest`
 

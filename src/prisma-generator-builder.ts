@@ -1,4 +1,8 @@
-import { GeneratorTemplateType, PackageJsonTemplateType } from "./lib/types";
+import {
+  GeneratorTemplateType,
+  PackageJsonTemplateType,
+  ReadmeTemplateType,
+} from "./lib/types";
 
 import { FileGenerator } from "./generator/component/file-generator/file-generator";
 
@@ -22,6 +26,8 @@ class PrismaGeneratorBuilder {
     this.generateGeneratorTs();
     this.generatePackageJson();
     this.generateBinTs();
+    this.generateReadme();
+    this.generatePrismaSchema();
     this.copyFiles();
   }
 
@@ -49,6 +55,35 @@ class PrismaGeneratorBuilder {
     };
 
     this.fileGenerator.generatePackageJson(tpl);
+  }
+  private generateReadme(template?: ReadmeTemplateType): void {
+    const tpl = template || {
+      provider: "provider",
+      prettyName: "prettyName",
+      defaultOutput: "defaultOutput",
+      name: "example-generator",
+      version: "1.0.0",
+      author: "John Doe",
+      description: "Prisma ORM Generator",
+      license: "MIT",
+    };
+
+    this.fileGenerator.generateReadme(tpl);
+  }
+
+  private generatePrismaSchema(template?: GeneratorTemplateType): void {
+    const tpl = template || {
+      provider: "provider",
+      prettyName: "prettyName",
+      defaultOutput: "defaultOutput",
+      name: "example-generator",
+      version: "1.0.0",
+      author: "John Doe",
+      description: "Prisma ORM Generator",
+      license: "MIT",
+    };
+
+    this.fileGenerator.generatePrismaSchema(tpl);
   }
 
   private generateBinTs(): void {

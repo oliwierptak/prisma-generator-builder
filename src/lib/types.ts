@@ -16,4 +16,11 @@ type PackageJsonTemplateType = {
   license: string;
 };
 
-export { AssociativeArray, GeneratorTemplateType, PackageJsonTemplateType };
+type ReadmeTemplateType = GeneratorTemplateType & PackageJsonTemplateType;
+
+export {
+  AssociativeArray,
+  GeneratorTemplateType,
+  PackageJsonTemplateType,
+  ReadmeTemplateType,
+};

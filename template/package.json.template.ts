@@ -1,6 +1,6 @@
 import { PackageJsonTemplateType } from "../src/lib/types";
 
-export default function getPackageJsonTemplate(
+export default function templateGetPackageJsonTemplate(
   template: PackageJsonTemplateType,
 ): string {
   return `{
