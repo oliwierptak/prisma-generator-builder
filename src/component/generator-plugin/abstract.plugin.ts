@@ -1,19 +1,21 @@
 import FileWriter from "../../generator/helper/helper.file-writer";
 import path from "path";
-import GeneratorPluginInterface from "../generator/generator-plugin-interface";
-import { GeneratorTemplateType } from "../../lib/types";
+import PrismaGeneratorBuilderPluginInterface from "../generator/plugin-interface";
+import { PrismaGeneratorBuilderConfig } from "../../lib/types";
 
 export default abstract class AbstractPlugin
-  implements GeneratorPluginInterface
+  implements PrismaGeneratorBuilderPluginInterface
 {
   public abstract readonly location: string;
 
-  generate(template: GeneratorTemplateType): void {
+  generate(template: PrismaGeneratorBuilderConfig): void {
     FileWriter.saveFile(
       path.join(template.outputDirectoryRoot, this.location),
       this.loadTemplate(template)
     );
   }
 
-  protected abstract loadTemplate(template: GeneratorTemplateType): string;
+  protected abstract loadTemplate(
+    template: PrismaGeneratorBuilderConfig
+  ): string;
 }

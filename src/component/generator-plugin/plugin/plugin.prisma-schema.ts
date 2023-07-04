@@ -1,14 +1,14 @@
-import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
-import { PrismaGeneratorOptionTemplateType } from "../../../lib/types";
+import PrismaGeneratorBuilderPluginInterface from "../../generator/plugin-interface";
+import { PrismaGeneratorTemplateType } from "../../../lib/types";
 import AbstractPlugin from "../abstract.plugin";
 
 export default class PluginPrismaSchema
   extends AbstractPlugin
-  implements GeneratorPluginInterface
+  implements PrismaGeneratorBuilderPluginInterface
 {
   public readonly location = "prisma/schema.prisma";
 
-  protected loadTemplate(template: PrismaGeneratorOptionTemplateType): string {
+  protected loadTemplate(template: PrismaGeneratorTemplateType): string {
     return `// Data source
 datasource db {
   provider = "sqlite"

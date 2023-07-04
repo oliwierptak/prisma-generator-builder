@@ -1,12 +1,11 @@
-import { GeneratorTemplateType } from "./lib/types";
+import { PrismaGeneratorBuilderConfig } from "./lib/types";
 import { Generator } from "./component/generator/generator";
-import { PluginContainer } from "./component/generator-plugin/plugin.container";
 
 class PrismaGeneratorBuilder {
-  static build(template: GeneratorTemplateType): void {
-    const generator = new Generator(PluginContainer.plugins);
+  static build(config: PrismaGeneratorBuilderConfig): void {
+    const generator = new Generator();
 
-    generator.generate(template);
+    generator.generate(config);
   }
 }
 

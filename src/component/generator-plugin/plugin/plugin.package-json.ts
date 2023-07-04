@@ -1,14 +1,14 @@
-import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
+import PrismaGeneratorBuilderPluginInterface from "../../generator/plugin-interface";
 import AbstractPlugin from "../abstract.plugin";
-import { GeneratorTemplateType } from "../../../lib/types";
+import { PrismaGeneratorBuilderConfig } from "../../../lib/types";
 
 export default class PluginPackageJson
   extends AbstractPlugin
-  implements GeneratorPluginInterface
+  implements PrismaGeneratorBuilderPluginInterface
 {
   public readonly location = "package.json";
 
-  protected loadTemplate(template: GeneratorTemplateType): string {
+  protected loadTemplate(template: PrismaGeneratorBuilderConfig): string {
     return `{
   "name": "${template.name}",
   "version": "1.0.0",

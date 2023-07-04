@@ -1,10 +1,17 @@
 import { describe, test } from "@jest/globals";
 import { Generator } from "./generator";
-import { GeneratorTemplateType } from "../../lib/types";
+import { PrismaGeneratorBuilderConfig } from "../../lib/types";
 import path from "path";
-import { logger } from "@prisma/internals";
-import { PluginContainer } from "../generator-plugin/plugin.container";
-import { templateFiles } from "../generator-plugin/plugin/plugin.copy-files";
+import {
+  PluginCopyFiles,
+  templateFiles,
+} from "../generator-plugin/plugin/plugin.copy-files";
+import PluginBin from "../generator-plugin/plugin/plugin.bin";
+import PluginGenerator from "../generator-plugin/plugin/plugin.generator";
+import PluginPackageJson from "../generator-plugin/plugin/plugin.package-json";
+import PluginPrismaSchema from "../generator-plugin/plugin/plugin.prisma-schema";
+import PluginReadme from "../generator-plugin/plugin/plugin.readme";
+import fs from "fs";
 
 jest.mock("@prisma/internals");
 
@@ -12,7 +19,7 @@ beforeEach(() => jest.clearAllMocks());
 
 describe("Builder", () => {
   test("generate() should generate files", async () => {
-    const template: GeneratorTemplateType = {
+    const config: PrismaGeneratorBuilderConfig = {
       provider: "provider",
       prettyName: "prettyName",
       defaultOutput: "defaultOutput",
@@ -22,20 +29,24 @@ describe("Builder", () => {
       description: "Prisma ORM Generator",
       license: "MIT",
       outputDirectoryRoot: "./build",
+      plugins: [
+        new PluginBin(),
+        new PluginGenerator(),
+        new PluginPackageJson(),
+        new PluginPrismaSchema(),
+        new PluginReadme(),
+        new PluginCopyFiles(),
+      ],
     };
 
-    const builder = new Generator(PluginContainer.plugins);
-    builder.generate(template);
+    const generator = new Generator();
+    generator.generate(config);
 
     for (const [location, fileList] of Object.entries(templateFiles)) {
-      const directory = path.join(template.outputDirectoryRoot, location);
+      const directory = path.join(config.outputDirectoryRoot, location);
       fileList.forEach((file) => {
-        logger.info(file);
-
-        //FileWriter.copyTemplateFile(file, directory);
-        //expect(fs.existsSync(path.join(directory, file))).toBe(true);
+        expect(fs.existsSync(path.join(directory, file))).toBe(true);
       });
     }
   });
 });
-6;

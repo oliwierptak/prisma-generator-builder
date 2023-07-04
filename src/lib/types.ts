@@ -1,12 +1,15 @@
+import PrismaGeneratorBuilderPluginInterface from "../component/generator/plugin-interface";
+
 interface AssociativeArray<T> {
   [key: string]: T;
 }
 
-type GeneratorTemplateOptionType = {
+type GeneratorConfigType = {
   outputDirectoryRoot: string;
+  plugins: PrismaGeneratorBuilderPluginInterface[];
 };
 
-type PrismaGeneratorOptionTemplateType = {
+type PrismaGeneratorTemplateType = {
   provider: string;
   prettyName: string;
   defaultOutput: string;
@@ -20,14 +23,13 @@ type PackageJsonTemplateType = {
   license: string;
 };
 
-type ReadmeTemplateType = PrismaGeneratorOptionTemplateType &
-  PackageJsonTemplateType;
-type GeneratorTemplateType = ReadmeTemplateType & GeneratorTemplateOptionType;
+type ReadmeTemplateType = PrismaGeneratorTemplateType & PackageJsonTemplateType;
+type PrismaGeneratorBuilderConfig = ReadmeTemplateType & GeneratorConfigType;
 
 export {
   AssociativeArray,
-  PrismaGeneratorOptionTemplateType,
+  PrismaGeneratorTemplateType,
   PackageJsonTemplateType,
   ReadmeTemplateType,
-  GeneratorTemplateType,
+  PrismaGeneratorBuilderConfig,
 };

@@ -1,5 +1,8 @@
-import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
-import { AssociativeArray, GeneratorTemplateType } from "../../../lib/types";
+import PrismaGeneratorBuilderPluginInterface from "../../generator/plugin-interface";
+import {
+  AssociativeArray,
+  PrismaGeneratorBuilderConfig,
+} from "../../../lib/types";
 import { logger } from "@prisma/internals";
 import path from "path";
 import FileWriter from "../../../generator/helper/helper.file-writer";
@@ -9,10 +12,10 @@ import * as templateListFromJson from "../../../../template.json";
 const { default: _, ...templateFiles } =
   templateListFromJson as AssociativeArray<string[]>;
 
-class PluginCopyFiles implements GeneratorPluginInterface {
+class PluginCopyFiles implements PrismaGeneratorBuilderPluginInterface {
   public readonly location = ".";
 
-  generate(template: GeneratorTemplateType): void {
+  generate(template: PrismaGeneratorBuilderConfig): void {
     for (const [location, fileList] of Object.entries(templateFiles)) {
       const directory = path.join(template.outputDirectoryRoot, location);
       fileList.forEach((file) => {
