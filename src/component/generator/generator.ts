@@ -1,4 +1,4 @@
-import { GeneratorTemplateType } from "../../../lib/types";
+import { GeneratorTemplateType } from "../../lib/types";
 import { logger } from "@prisma/internals";
 import GeneratorPluginInterface from "./generator-plugin-interface";
 

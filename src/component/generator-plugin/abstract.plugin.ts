@@ -1,7 +1,7 @@
-import FileWriter from "../../helper/helper.file-writer";
+import FileWriter from "../../generator/helper/helper.file-writer";
 import path from "path";
 import GeneratorPluginInterface from "../generator/generator-plugin-interface";
-import { GeneratorTemplateType } from "../../../lib/types";
+import { GeneratorTemplateType } from "../../lib/types";
 
 export default abstract class AbstractPlugin
   implements GeneratorPluginInterface

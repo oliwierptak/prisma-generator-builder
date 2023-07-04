@@ -1,5 +1,5 @@
 import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
-import { PrismaGeneratorOptionTemplateType } from "../../../../lib/types";
+import { PrismaGeneratorOptionTemplateType } from "../../../lib/types";
 import AbstractPlugin from "../abstract.plugin";
 
 export default class PluginGenerator

@@ -1,9 +1,9 @@
 import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
-import { AssociativeArray, GeneratorTemplateType } from "../../../../lib/types";
+import { AssociativeArray, GeneratorTemplateType } from "../../../lib/types";
 import { logger } from "@prisma/internals";
 import path from "path";
-import FileWriter from "../../../helper/helper.file-writer";
-import * as templateListFromJson from "../../../../../template.json";
+import FileWriter from "../../../generator/helper/helper.file-writer";
+import * as templateListFromJson from "../../../../template.json";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { default: _, ...templateFiles } =

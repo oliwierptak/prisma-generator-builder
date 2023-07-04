@@ -1,6 +1,6 @@
 import { describe, test } from "@jest/globals";
 import { Generator } from "./generator";
-import { GeneratorTemplateType } from "../../../lib/types";
+import { GeneratorTemplateType } from "../../lib/types";
 import path from "path";
 import { logger } from "@prisma/internals";
 import { PluginContainer } from "../generator-plugin/plugin.container";

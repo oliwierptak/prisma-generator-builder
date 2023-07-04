@@ -1,6 +1,6 @@
 import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
 import AbstractPlugin from "../abstract.plugin";
-import { GeneratorTemplateType } from "../../../../lib/types";
+import { GeneratorTemplateType } from "../../../lib/types";
 
 export default class PluginPackageJson
   extends AbstractPlugin

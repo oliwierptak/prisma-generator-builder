@@ -1,5 +1,5 @@
 import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
-import { GeneratorTemplateType } from "../../../../lib/types";
+import { GeneratorTemplateType } from "../../../lib/types";
 import AbstractPlugin from "../abstract.plugin";
 
 export default class PluginBin

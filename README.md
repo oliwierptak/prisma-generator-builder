@@ -15,11 +15,11 @@ Creates simple and ready to run `prisma generator` package with configured:
 └──src
     ├── bin.ts
     └── generator
-         ├── component
-         ├    ├── helper.hello-world.test.ts
-         ├    ├── helper.hello-world.ts
          ├── helper
+         ├    ├── helper.file-writer.test.ts
          ├    ├── helper.file-writer.ts
+         ├    ├── helper.hello-world.test.ts
+         ├    ├── helper.hello-world.ts         
          └── generator.ts            
     ├── package.json
     ...
@@ -36,21 +36,20 @@ npx ts-node src/bin.ts
 npx tsx src/bin.ts 
 ```
 
-The default output folder is under `./generate`.
+The default output folder is under `../prisma-generator-example/`.
 
 ```
-cd ./generate
+cd ../prisma-generator-example/
 npm install
 ```
 
-See `README.md` in the generated `./generate` folder to see how to easily setup `prisma.schema`.
+Check `README.md` in the generated `../prisma-generator-example/` folder to see how to easily setup `prisma.schema`.
 
 ### Schema setup
 
 A custom generator must be added to `prisma.schema` in order for it be executed with `npx prisma generate`.
 
-Depending on if you are using `ts-node` or `tsx`,
-and whenever you are using path aliases,
+Depending on if you are using `ts-node` or `tsx`, and whenever you are using path aliases,
 there are few configuration options. 
 
 Assuming the generator files were generated under `src/generator/`.
@@ -75,7 +74,7 @@ generator prisma-generator-example {
 
 ```
 
-Note: You'll need to install `tsconfig-paths` package.
+Note: `tsconfig-paths` package is required here.
 
 #### schema.prisma with `tsx`
 
@@ -94,29 +93,29 @@ Run `npx prisma generate`
 
 
 ```
-prisma:info Hello World from prettyName
+prisma:info Hello World from prisma-generator-example
 prisma:info Generated datamodel under: data-model.json
 
 ✔ Generated Prisma Client (4.16.2 | library) to .\node_modules\@prisma\client in 82ms
 
-✔ Generated prettyName (1.0.0) to .\prisma\prisma-generator-example in 39ms
+✔ Generated Prisma Generator Example (1.0.0) to .\prisma\prisma-generator-example in 39ms
 You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
 ```
 
 ## Custom generator development
 
-To get started right away, use the default component, or create new one.
+Prisma generators usually generate files, and to help with that there are two helper classes.
 
-### Component
 
-The generator uses very basic `HelloWorld` example component, 
-ensuring that prisma and custom generator logic are not mixed together. 
-This way it will be easier to migrate to future versions of prisma.
-See [generator.ts](src/generator/generator.ts) example.
+### HelloWorld Helper
 
-### Helper
+The generator uses very basic `HelloWorld` helper, ensuring that prisma and custom generator
+logic are not mixed together. This way, it will be easier to migrate to future versions of prisma.
 
-`FileWriter` class can be imported from `helper.file-writer.ts`, it has two methods.
+To see the example check [generator.ts](src/generator/generator.ts) example.
+
+
+### FileWriter Helper
 
 `saveFile()` - saves any file
 ```ts
