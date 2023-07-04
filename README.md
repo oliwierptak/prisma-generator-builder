@@ -57,9 +57,6 @@ You can now start using Prisma Client in your code. Reference: https://pris.ly/d
 
 ## Custom Generator Development
 
-Prisma's generators usually generate files, and to help with that there are two helper classes.
-
-
 ### HelloWorld Helper
 
 The generator uses very basic `HelloWorld` helper example.
@@ -71,10 +68,10 @@ To see the example check [generator.ts](src/generator/generator.ts).
 
 ### FileWriter Helper
 
+Handles file writing.
+
 `saveFile()` - saves any file
 ```typescript
-import FileWriter from "./helper/helper.file-writer";
-
 FileWriter.saveFile("foo.txt", `foo`);
 ```
 
@@ -82,8 +79,6 @@ FileWriter.saveFile("foo.txt", `foo`);
 `saveTypescriptFile()` - saves and formats typescript file 
 
 ```typescript
-import FileWriter from "./helper/helper.file-writer";
-
 FileWriter.saveTypescriptFile("foo.ts", `const foo="foo"; console.log(foo);`);
 ```
 
