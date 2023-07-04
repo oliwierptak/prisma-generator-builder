@@ -17,7 +17,7 @@ jest.mock("@prisma/internals");
 
 beforeEach(() => jest.clearAllMocks());
 
-describe("Builder", () => {
+describe("Generator", () => {
   test("generate() should generate files", async () => {
     const config: PrismaGeneratorBuilderConfig = {
       provider: "provider",

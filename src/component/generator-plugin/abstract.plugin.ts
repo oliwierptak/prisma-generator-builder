@@ -15,7 +15,5 @@ export default abstract class AbstractPlugin
     );
   }
 
-  protected abstract loadTemplate(
-    template: PrismaGeneratorBuilderConfig
-  ): string;
+  protected abstract loadTemplate(config: PrismaGeneratorBuilderConfig): string;
 }
