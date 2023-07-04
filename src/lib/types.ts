@@ -2,7 +2,11 @@ interface AssociativeArray<T> {
   [key: string]: T;
 }
 
-type GeneratorTemplateType = {
+type GeneratorTemplateOptionType = {
+  outputDirectoryRoot: string;
+};
+
+type PrismaGeneratorOptionTemplateType = {
   provider: string;
   prettyName: string;
   defaultOutput: string;
@@ -16,11 +20,14 @@ type PackageJsonTemplateType = {
   license: string;
 };
 
-type ReadmeTemplateType = GeneratorTemplateType & PackageJsonTemplateType;
+type ReadmeTemplateType = PrismaGeneratorOptionTemplateType &
+  PackageJsonTemplateType;
+type GeneratorTemplateType = ReadmeTemplateType & GeneratorTemplateOptionType;
 
 export {
   AssociativeArray,
-  GeneratorTemplateType,
+  PrismaGeneratorOptionTemplateType,
   PackageJsonTemplateType,
   ReadmeTemplateType,
+  GeneratorTemplateType,
 };

@@ -1,21 +1,21 @@
 import { describe, expect, test } from "@jest/globals";
-import { HelloWorld } from "./hello-world";
+import { HelloWorld } from "./helper.hello-world";
 import { logger } from "@prisma/internals";
 
 jest.mock("@prisma/internals");
 
 beforeEach(() => jest.clearAllMocks());
 
-describe("Hello World", () => {
+describe("HelloWorld Helper", () => {
   test("hi() should use prisma logger to generate output", async () => {
-    const dbSetSpy = jest
+    const loggerSpy = jest
       .spyOn(logger, "info")
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       .mockImplementationOnce(() => {});
 
     const helloWorld = new HelloWorld();
-    helloWorld.hi("test-name");
+    helloWorld.hi("test-location");
 
-    expect(dbSetSpy).toBeCalledWith("Hello World from test-name");
+    expect(loggerSpy).toBeCalledWith("Hello World from test-location");
   });
 });

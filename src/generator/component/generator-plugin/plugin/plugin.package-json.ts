@@ -1,9 +1,15 @@
-import { PackageJsonTemplateType } from "../src/lib/types";
+import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
+import AbstractPlugin from "../abstract.plugin";
+import { GeneratorTemplateType } from "../../../../lib/types";
 
-export default function templateGetPackageJsonTemplate(
-  template: PackageJsonTemplateType,
-): string {
-  return `{
+export default class PluginPackageJson
+  extends AbstractPlugin
+  implements GeneratorPluginInterface
+{
+  public readonly location = "package.json";
+
+  protected loadTemplate(template: GeneratorTemplateType): string {
+    return `{
   "name": "${template.name}",
   "version": "1.0.0",
   "description": "${template.description}",
@@ -41,6 +47,6 @@ export default function templateGetPackageJsonTemplate(
     "ts-jest": "*",
     "ts-node": "*"
   }
-}
-`;
+}`;
+  }
 }

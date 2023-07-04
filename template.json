@@ -8,11 +8,9 @@
     "jest.config.js",
     "tsconfig.json"
   ],
-  "src/generator/helper": [
-    "helper.file-writer.ts"
-  ],
-  "src/generator/component/hello-world": [
-    "hello-world.ts",
-    "hello-world.test.ts"
+  "src/generator/helper/": [
+    "helper.file-writer.ts",
+    "helper.hello-world.ts",
+    "helper.hello-world.test.ts"
   ]
 }

@@ -16,8 +16,8 @@ Creates simple and ready to run `prisma generator` package with configured:
     ├── bin.ts
     └── generator
          ├── component
-         ├    ├── hello-world.test.ts
-         ├    ├── hello-world.ts
+         ├    ├── helper.hello-world.test.ts
+         ├    ├── helper.hello-world.ts
          ├── helper
          ├    ├── helper.file-writer.ts
          └── generator.ts            
@@ -36,14 +36,14 @@ npx ts-node src/bin.ts
 npx tsx src/bin.ts 
 ```
 
-The default output folder is under `./build`.
+The default output folder is under `./generate`.
 
 ```
-cd ./build
+cd ./generate
 npm install
 ```
 
-See `README.md` in the generated `./build` folder to see how to easily setup `prisma.schema`.
+See `README.md` in the generated `./generate` folder to see how to easily setup `prisma.schema`.
 
 ### Schema setup
 
@@ -141,7 +141,7 @@ Generated package comes together with pre-configured `jest`.
 `npx jest`
 
 ```
- PASS  src/generator/component/hello-world.test.ts
+ PASS  src/generator/component/helper.hello-world.test.ts
   Hello World
     √ hi() should use prisma logger to generate output (3 ms)
 

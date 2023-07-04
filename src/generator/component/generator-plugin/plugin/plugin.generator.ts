@@ -1,12 +1,18 @@
-import { GeneratorTemplateType } from "../src/lib/types";
+import GeneratorPluginInterface from "../../generator/generator-plugin-interface";
+import { PrismaGeneratorOptionTemplateType } from "../../../../lib/types";
+import AbstractPlugin from "../abstract.plugin";
 
-export default function templateGetGeneratorTemplate(
-  template: GeneratorTemplateType,
-): string {
-  return `import { generatorHandler, GeneratorOptions } from "@prisma/generator-helper";
+export default class PluginGenerator
+  extends AbstractPlugin
+  implements GeneratorPluginInterface
+{
+  public readonly location = "src/generator/generator.ts";
+
+  protected loadTemplate(template: PrismaGeneratorOptionTemplateType): string {
+    return `import { generatorHandler, GeneratorOptions } from "@prisma/generator-helper";
 import { logger } from "@prisma/internals";
 import { version } from "../../package.json";
-import { HelloWorld } from "./component/hello-world/hello-world";
+import { HelloWorld } from "./helper/helper.hello-world";
 
 generatorHandler({
   onManifest: () => ({
@@ -29,4 +35,5 @@ generatorHandler({
   },
 });
 `;
+  }
 }

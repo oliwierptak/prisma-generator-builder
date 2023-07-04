@@ -1,4 +1,4 @@
-import FileWriter from "../../helper/helper.file-writer";
+import FileWriter from "./helper.file-writer";
 import { DMMF } from "@prisma/client/runtime";
 import path from "path";
 import { logger } from "@prisma/internals";
