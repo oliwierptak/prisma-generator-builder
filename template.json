@@ -12,12 +12,9 @@
   "src/generator/helper": [
     "helper.file-writer.ts"
   ],
-  "src/generator/component": [
+  "src/generator/component/hello-world": [
     "hello-world.ts",
     "hello-world.test.ts"
-  ],
-  "src/logger": [
-    "logger.interface.ts"
   ],
   "prisma": [
     "schema.prisma"

@@ -6,7 +6,7 @@ export default function getGeneratorTemplate(
   return `import { generatorHandler, GeneratorOptions } from "@prisma/generator-helper";
 import { logger } from "@prisma/internals";
 import { version } from "../../package.json";
-import { HelloWorld } from "./component/hello-world";
+import { HelloWorld } from "./component/hello-world/hello-world";
 
 generatorHandler({
   onManifest: () => ({
@@ -18,9 +18,9 @@ generatorHandler({
     defaultOutput: "${template.defaultOutput}",
   }),
   onGenerate: async (options: GeneratorOptions) => {
-    const helloWorld = HelloWorld.instance(logger);
+    const helloWorld = new HelloWorld();
 
-    helloWorld.hi("${template.prettyName}");
+    helloWorld.hi("prisma-generator-builder");
 
     helloWorld.debugDataModel(
       options.dmmf.datamodel,

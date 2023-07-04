@@ -1,30 +1,21 @@
-import getPackageJsonTemplate from "../template/package.json.template";
-import FileWriter from "./generator/helper/helper.file-writer";
-import {
-  AssociativeArray,
-  GeneratorTemplateType,
-  PackageJsonTemplateType,
-} from "./lib/types";
-import getGeneratorTemplate from "../template/generator.template";
-import LoggerInterface from "./logger/logger.interface";
-import { logger as prismaLogger } from "@prisma/internals";
-import path from "path";
-import * as templateListFromJson from "../template.json";
+import { GeneratorTemplateType, PackageJsonTemplateType } from "./lib/types";
+
+import { FileGenerator } from "./generator/component/file-generator/file-generator";
 
 class PrismaGeneratorBuilder {
-  private _logger?: LoggerInterface;
   private readonly outputDirectoryRoot: string;
+  private _fileGenerator?: FileGenerator;
 
-  constructor(outputDirectory = "./build", logger?: LoggerInterface) {
-    this._logger = logger;
+  constructor(outputDirectory = "./build") {
     this.outputDirectoryRoot = outputDirectory;
   }
 
-  private get logger() {
-    if (!this._logger) {
-      this._logger = prismaLogger;
+  private get fileGenerator() {
+    if (!this._fileGenerator) {
+      this._fileGenerator = new FileGenerator(this.outputDirectoryRoot);
     }
-    return this._logger;
+
+    return this._fileGenerator;
   }
 
   build(): void {
@@ -34,26 +25,21 @@ class PrismaGeneratorBuilder {
     this.copyFiles();
   }
 
-  private generateGeneratorTs(template?: GeneratorTemplateType): void {
-    this.logger.info("Generating: generator.ts");
+  private copyFiles() {
+    this.fileGenerator.copyFiles();
+  }
 
+  private generateGeneratorTs(template?: GeneratorTemplateType): void {
     const tpl = template || {
       provider: "provider",
       prettyName: "prettyName",
       defaultOutput: "defaultOutput",
     };
 
-    const result = getGeneratorTemplate(tpl);
-
-    FileWriter.saveTypescriptFile(
-      path.join(this.outputDirectoryRoot, "src/generator/generator.ts"),
-      result
-    );
+    this.fileGenerator.generateGeneratorTs(tpl);
   }
 
   private generatePackageJson(template?: PackageJsonTemplateType): void {
-    this.logger.info("Generating: package.json");
-
     const tpl = template || {
       name: "example-generator",
       version: "1.0.0",
@@ -62,40 +48,11 @@ class PrismaGeneratorBuilder {
       license: "MIT",
     };
 
-    const result = getPackageJsonTemplate(tpl);
-
-    FileWriter.saveFile(
-      path.join(this.outputDirectoryRoot, "package.json"),
-      result
-    );
+    this.fileGenerator.generatePackageJson(tpl);
   }
 
   private generateBinTs(): void {
-    this.logger.info("Generating: bin.ts");
-
-    FileWriter.saveFile(
-      path.join(this.outputDirectoryRoot, "src/bin.ts"),
-      `#!/usr/bin/env node
-import "./generator/generator";
-`
-    );
-  }
-
-  private copyFiles(): void {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { default: _, ...filesToCopy } =
-      templateListFromJson as AssociativeArray<string[]>;
-
-    this.logger.info("Copying files...");
-
-    for (const [key, fileList] of Object.entries(filesToCopy)) {
-      const directory = path.join(this.outputDirectoryRoot, key);
-      fileList.forEach((file) => {
-        this.logger.info(file);
-
-        FileWriter.copyTemplateFile(file, directory);
-      });
-    }
+    this.fileGenerator.generateBinTs();
   }
 }
 
