@@ -30,7 +30,7 @@ npx ts-node src/bin.ts
 npx tsx src/bin.ts 
 ```
 
-The default output folder is under `./dist`.
+The default output folder is under `./build`.
 
 Now, set up `prisma.schema` and add custom generator.
 This way it can be executed when running `npx prisma generate`.
