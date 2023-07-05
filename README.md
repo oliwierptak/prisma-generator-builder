@@ -3,7 +3,7 @@
 Creates simple and ready to run `prisma generator`.
 
 It has pluggable architecture, and new functionality can be easily provided with additional plugins.
-Read more about [generator plugins here]().
+Read more about [generator plugins here](README_PLUGINS.md).
 
 Together with preconfigured packages, it creates project ready for development.
 
