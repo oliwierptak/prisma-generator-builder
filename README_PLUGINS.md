@@ -2,15 +2,6 @@
 
 Custom generator logic can be provided via additional plugins.
 
-### Default plugins
-
-- `PluginBin` : generates `bin.ts` script
-- `PluginGenerator` : generates `generator.ts` script
-- `PluginPackageJson` : generates `package.json` file
-- `PluginPrismaSchema` : generates `schema.prisma` file
-- `PluginReadme` : generates `README.md` file
-- `PluginCopyFiles` : copies set of files without modification
-
 ### Contract
 
 ```typescript
@@ -89,6 +80,17 @@ const config: PrismaGeneratorBuilderConfig = {
 
 - #### plugins
     Set of plugins implementing `PrismaGeneratorBuilderPluginInterface`.
+
+
+### Default plugins
+
+- `PluginBin` : generates `bin.ts` script
+- `PluginGenerator` : generates `generator.ts` script
+- `PluginPackageJson` : generates `package.json` file
+- `PluginPrismaSchema` : generates `schema.prisma` file
+- `PluginReadme` : generates `README.md` file
+- `PluginCopyFiles` : copies set of files without modification
+
 
 ### Usage
 
