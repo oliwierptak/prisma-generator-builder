@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { confirm, input } from "@inquirer/prompts";
 import { PrismaGeneratorBuilderConfig } from "../lib/types";
 import PluginBin from "../component/generator-plugin/plugin/plugin.bin";
@@ -69,12 +71,20 @@ async function wizard() {
 }
 
 wizard().then(async (config) => {
-  console.log(config);
-  const answer = await confirm({ message: "Continue?" });
-
-  console.log(answer);
+  const answer = await confirm({
+    message: "Build new generator under " + config.outputDirectoryRoot + "?",
+  });
 
   if (answer) {
     PrismaGeneratorBuilder.build(config);
+
+    process.stdout.write("All Done.\n");
+    process.stdout.write("\n");
+
+    process.stdout.write("Usage:\n");
+    process.stdout.write(" cd " + config.outputDirectoryRoot + "\n");
+    process.stdout.write(" npm install\n");
+    process.stdout.write(" npx prisma generate\n");
+    process.stdout.write("\n");
   }
 });
