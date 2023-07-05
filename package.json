@@ -24,10 +24,10 @@
   "author": "Oliwier Ptak",
   "license": "MIT",
   "dependencies": {
+    "@inquirer/confirm": "^2.0.4",
+    "@inquirer/prompts": "^2.3.0",
     "@prisma/generator-helper": "^4.16.2",
     "@prisma/internals": "^4.16.2",
-    "inquirer": "^9.2.7",
-    "sanitize-filename-ts": "^1.0.2",
     "ts-command-line-args": "^2.5.1",
     "ts-toolbelt": "^9.6.0",
     "tsconfig-paths": "^4.2.0",
