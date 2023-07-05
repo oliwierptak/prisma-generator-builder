@@ -23,7 +23,7 @@ describe("Generator", () => {
       provider: "provider",
       prettyName: "prettyName",
       defaultOutput: "defaultOutput",
-      name: "example-generator",
+      name: "prisma-generator-example",
       version: "1.0.0",
       author: "John Doe",
       description: "Prisma ORM Generator",
