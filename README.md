@@ -35,40 +35,30 @@ Together with preconfigured packages, it creates project ready for development.
 
 ## Usage
 
-```
-npx ts-node src/bin.ts 
-```
-
-The default output folder is under `../prisma-generator-example/`.
+Run the configurator to get started. 
 
 ```
-cd ../prisma-generator-example/
-npm install
-npx prisma generate
+npx prisma-generator-builder
 ```
 
-```
-prisma:info Hello World from prisma-generator-example
-prisma:info Generated datamodel under: data-model.json
+![img.png](configurator.png)
 
-✔ Generated Prisma Client (4.16.2 | library) to .\node_modules\@prisma\client in 82ms
-
-✔ Generated Prisma Generator Example (1.0.0) to .\prisma\prisma-generator-example in 39ms
-You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
-```
+![img.png](generator.png)
 
 ## Custom Generator Development
 
-### HelloWorld Helper
+### Helpers
+
+#### HelloWorld Helper
 
 The generator uses very basic `HelloWorld` helper example.
-Thanks  to this separation, prisma and custom generator
+However, thanks  to this separation, prisma and custom generator
 logic are not mixed together.
 
 To see the example check [generator.ts](src/generator/generator.ts).
 
 
-### FileWriter Helper
+#### FileWriter Helper
 
 Handles file writing.
 
@@ -84,7 +74,7 @@ FileWriter.saveFile("foo.txt", `foo`);
 FileWriter.saveTypescriptFile("foo.ts", `const foo="foo"; console.log(foo);`);
 ```
 
-### Custom Generator Tests
+### Tests
 
 Generated package comes together with pre-configured `jest`.
 
