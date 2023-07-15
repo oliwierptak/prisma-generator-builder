@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
 import { confirm, input } from "@inquirer/prompts";
-import { PrismaGeneratorBuilderConfig } from "../lib/types";
 import PluginBin from "../component/generator-plugin/plugin/plugin.bin";
 import PluginGenerator from "../component/generator-plugin/plugin/plugin.generator";
 import PluginPackageJson from "../component/generator-plugin/plugin/plugin.package-json";
 import PluginPrismaSchema from "../component/generator-plugin/plugin/plugin.prisma-schema";
 import PluginReadme from "../component/generator-plugin/plugin/plugin.readme";
 import { PluginCopyFiles } from "../component/generator-plugin/plugin/plugin.copy-files";
-import PrismaGeneratorBuilder from "../prisma-generator-builder";
+import {
+  PrismaGeneratorBuilder,
+  PrismaGeneratorBuilderConfig,
+} from "../prisma-generator-builder";
 import { logger } from "@prisma/internals";
 
 async function configurator() {

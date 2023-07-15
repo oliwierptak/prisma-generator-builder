@@ -9,4 +9,4 @@ class PrismaGeneratorBuilder {
   }
 }
 
-export default PrismaGeneratorBuilder;
+export { PrismaGeneratorBuilder, PrismaGeneratorBuilderConfig };

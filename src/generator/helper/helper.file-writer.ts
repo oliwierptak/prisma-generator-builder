@@ -1,6 +1,6 @@
 import fs from "fs";
 import * as path from "path";
-import prettier from "prettier";
+import * as prettier from "prettier";
 
 class FileWriter {
   static saveFile(writeLocation: string, content: string) {

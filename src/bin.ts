@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-import PrismaGeneratorBuilder from "./prisma-generator-builder";
-import { PrismaGeneratorBuilderConfig } from "./lib/types";
+import {
+  PrismaGeneratorBuilder,
+  PrismaGeneratorBuilderConfig,
+} from "./prisma-generator-builder";
 import PluginBin from "./component/generator-plugin/plugin/plugin.bin";
 import PluginGenerator from "./component/generator-plugin/plugin/plugin.generator";
 import PluginPackageJson from "./component/generator-plugin/plugin/plugin.package-json";

@@ -1,5 +1,4 @@
 import { describe, test } from "@jest/globals";
-import { PrismaGeneratorBuilderConfig } from "../../lib/types";
 import path from "path";
 import {
   PluginCopyFiles,
@@ -11,7 +10,10 @@ import PluginPackageJson from "../generator-plugin/plugin/plugin.package-json";
 import PluginPrismaSchema from "../generator-plugin/plugin/plugin.prisma-schema";
 import PluginReadme from "../generator-plugin/plugin/plugin.readme";
 import fs from "fs";
-import PrismaGeneratorBuilder from "../../prisma-generator-builder";
+import {
+  PrismaGeneratorBuilder,
+  PrismaGeneratorBuilderConfig,
+} from "../../prisma-generator-builder";
 
 jest.mock("@prisma/internals");
 
