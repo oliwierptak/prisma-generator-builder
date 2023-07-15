@@ -27,12 +27,21 @@ class FileWriter {
           console.log(error);
           reject(error);
         }
-      }),
+      })
     );
 
     promise.then((value: string) => {
       FileWriter.saveFile(fileName, value);
     });
+  }
+
+  static copyTemplateFile(fileName: string, optionalTargetPath = ""): void {
+    const sourcePath = path.join(__dirname, "../../../template", fileName);
+    const targetPath = path.join(optionalTargetPath, fileName);
+
+    FileWriter.createPath(targetPath);
+
+    fs.writeFileSync(targetPath, fs.readFileSync(sourcePath, "utf-8"));
   }
 
   private static createPath(writeLocation: string) {

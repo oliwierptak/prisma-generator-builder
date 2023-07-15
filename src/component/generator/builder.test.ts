@@ -1,5 +1,4 @@
 import { describe, test } from "@jest/globals";
-import { Generator } from "./generator";
 import { PrismaGeneratorBuilderConfig } from "../../lib/types";
 import path from "path";
 import {
@@ -12,13 +11,14 @@ import PluginPackageJson from "../generator-plugin/plugin/plugin.package-json";
 import PluginPrismaSchema from "../generator-plugin/plugin/plugin.prisma-schema";
 import PluginReadme from "../generator-plugin/plugin/plugin.readme";
 import fs from "fs";
+import PrismaGeneratorBuilder from "../../prisma-generator-builder";
 
 jest.mock("@prisma/internals");
 
 beforeEach(() => jest.clearAllMocks());
 
-describe("Generator", () => {
-  test("generate() should generate files", async () => {
+describe("Builder", () => {
+  test("run() should create new project", async () => {
     const config: PrismaGeneratorBuilderConfig = {
       provider: "provider",
       prettyName: "prettyName",
@@ -26,9 +26,9 @@ describe("Generator", () => {
       name: "prisma-generator-example",
       version: "1.0.0",
       author: "John Doe",
-      description: "Prisma ORM Generator",
+      description: "Prisma ORM Builder",
       license: "MIT",
-      outputDirectoryRoot: "./build",
+      outputDirectoryRoot: "./run",
       plugins: [
         new PluginBin(),
         new PluginGenerator(),
@@ -39,8 +39,7 @@ describe("Generator", () => {
       ],
     };
 
-    const generator = new Generator();
-    generator.generate(config);
+    PrismaGeneratorBuilder.run(config);
 
     for (const [location, fileList] of Object.entries(templateFiles)) {
       const directory = path.join(config.outputDirectoryRoot, location);

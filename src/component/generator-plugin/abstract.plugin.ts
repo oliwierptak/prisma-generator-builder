@@ -8,7 +8,7 @@ export default abstract class AbstractPlugin
 {
   public abstract readonly location: string;
 
-  generate(template: PrismaGeneratorBuilderConfig): void {
+  run(template: PrismaGeneratorBuilderConfig): void {
     FileWriter.saveFile(
       path.join(template.outputDirectoryRoot, this.location),
       this.loadTemplate(template)

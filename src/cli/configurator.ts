@@ -74,7 +74,7 @@ configurator().then(async (config) => {
   });
 
   if (answer) {
-    PrismaGeneratorBuilder.build(config);
+    PrismaGeneratorBuilder.run(config);
 
     logger.info("All Done.");
 

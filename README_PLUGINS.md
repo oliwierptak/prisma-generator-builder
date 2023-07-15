@@ -8,7 +8,7 @@ Custom generator logic can be provided via additional plugins.
 interface PrismaGeneratorBuilderPluginInterface {
   readonly location: string;
 
-  generate(config: PrismaGeneratorBuilderConfig): void;
+  run(config: PrismaGeneratorBuilderConfig): void;
 }
 ```
 
@@ -95,7 +95,7 @@ const config: PrismaGeneratorBuilderConfig = {
 ### Usage
 
 ```typescript
-import { Generator } from "./generator";
+import { PrismaGeneratorBuilder } from "@prisma-generator-builder";
 
 const config: PrismaGeneratorBuilderConfig = {
   provider: "provider",
@@ -104,9 +104,9 @@ const config: PrismaGeneratorBuilderConfig = {
   name: "prisma-generator-example",
   version: "1.0.0",
   author: "John Doe",
-  description: "Prisma ORM Generator",
+  description: "Prisma ORM Builder",
   license: "MIT",
-  outputDirectoryRoot: "./build",
+  outputDirectoryRoot: "./run",
   plugins: [
     new PluginBin(),
     new PluginGenerator(),
@@ -117,8 +117,7 @@ const config: PrismaGeneratorBuilderConfig = {
   ],
 };
 
-const generator = new Generator();
-generator.generate(config);
+PrismaGeneratorBuilder.run(config);
 ```
 
-See [generator.test.ts](src/component/generator/generator.test.ts) for an example.
+See [builder.test.ts](src/component/generator/builder.test.ts) for an example.

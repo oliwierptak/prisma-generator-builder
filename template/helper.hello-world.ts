@@ -1,11 +1,10 @@
 import FileWriter from "./helper.file-writer";
-import { DMMF } from "@prisma/client/runtime";
-import path from "path";
+import * as path from "path";
 import { logger } from "@prisma/internals";
-import Datamodel = DMMF.Datamodel;
+import { DMMF } from "@prisma/generator-helper/dist/dmmf";
 
 export class HelloWorld {
-  debugDataModel(datamodel: Datamodel, filename: string) {
+  debugDataModel(datamodel: DMMF.Datamodel, filename: string) {
     const output = path.join(filename, "data-model.json");
 
     FileWriter.saveFile(output, JSON.stringify(datamodel));

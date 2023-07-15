@@ -4,13 +4,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Generator
+// Builder
 generator client {
   provider = "prisma-client-js"
 }
 
 generator prisma-generator-builder {
-  provider = "tsx ./src/generator/generator.ts"
+  provider = "tsx ./src/generator/builder.ts"
   output   = "./prisma-generator-generator"
 }
 

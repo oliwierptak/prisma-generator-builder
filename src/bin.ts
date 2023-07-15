@@ -28,4 +28,4 @@ const config: PrismaGeneratorBuilderConfig = {
   ],
 };
 
-PrismaGeneratorBuilder.build(config);
+PrismaGeneratorBuilder.run(config);

@@ -15,7 +15,7 @@ const { default: _, ...templateFiles } =
 class PluginCopyFiles implements PrismaGeneratorBuilderPluginInterface {
   public readonly location = ".";
 
-  generate(config: PrismaGeneratorBuilderConfig): void {
+  run(config: PrismaGeneratorBuilderConfig): void {
     for (const [location, fileList] of Object.entries(templateFiles)) {
       const directory = path.join(config.outputDirectoryRoot, location);
       fileList.forEach((file) => {

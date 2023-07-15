@@ -1,12 +1,12 @@
 import { PrismaGeneratorBuilderConfig } from "../../lib/types";
 import { logger } from "@prisma/internals";
 
-export class Generator {
-  generate(config: PrismaGeneratorBuilderConfig) {
+export class Builder {
+  run(config: PrismaGeneratorBuilderConfig) {
     config.plugins.forEach((plugin) => {
       this.info(plugin.location);
 
-      plugin.generate(config);
+      plugin.run(config);
     });
   }
 

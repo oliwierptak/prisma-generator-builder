@@ -13,9 +13,6 @@ export default class PluginPackageJson
   "name": "${template.name}",
   "version": "1.0.0",
   "description": "${template.description}",
-  "bin": {
-    "prisma-generator-seeder": "dist/bin.js"
-  },
   "keywords": [
     "orm",
     "prisma",
@@ -25,27 +22,31 @@ export default class PluginPackageJson
   "author": "${template.author}",
   "license": "${template.license}",
   "dependencies": {
-    "@prisma/generator-helper": "*",
-    "@prisma/internals": "*",
-    "ts-toolbelt": "*",
-    "typescript": "*"
+    "@inquirer/confirm": "^2.0.4",
+    "@inquirer/prompts": "^2.3.0",
+    "@prisma/generator-helper": "^5.0.0",
+    "@prisma/internals": "^5.0.0",
+    "ts-command-line-args": "^2.5.1",
+    "ts-toolbelt": "^9.6.0",
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "@jest/globals": "*",
-    "@prisma/client": "*",
-    "@types/jest": "*",
-    "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "eslint": "*",
-    "eslint-config-prettier": "*",
-    "eslint-plugin-jest": "*",
-    "eslint-plugin-prettier": "*",
-    "jest": "*",
-    "jest-mock-extended": "*",
-    "prettier": "*",
-    "prisma": "*",
-    "ts-jest": "*",
-    "ts-node": "*"
+    "@jest/globals": "^29.5.0",
+    "@prisma/client": "^5.0.0",
+    "@types/inquirer": "^9.0.3",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
+    "jest-mock-extended": "^3.0.4",
+    "prettier": "^2.8.8",
+    "prisma": "^5.0.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1"
   }
 }`;
   }
