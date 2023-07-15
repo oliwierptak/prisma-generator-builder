@@ -9,8 +9,9 @@ import PluginPrismaSchema from "../component/generator-plugin/plugin/plugin.pris
 import PluginReadme from "../component/generator-plugin/plugin/plugin.readme";
 import { PluginCopyFiles } from "../component/generator-plugin/plugin/plugin.copy-files";
 import PrismaGeneratorBuilder from "../prisma-generator-builder";
+import { logger } from "@prisma/internals";
 
-async function wizard() {
+async function configurator() {
   const result = {} as PrismaGeneratorBuilderConfig;
 
   result.provider = await input({
@@ -23,38 +24,35 @@ async function wizard() {
     default: "Prisma Generator Example",
   });
 
-  result.defaultOutput = await input({
-    message: "Generator output directory:",
-    default: "./prisma-generator-example/",
-  });
+  result.defaultOutput = "./" + result.provider;
 
   result.name = await input({
-    message: "Generator package name:",
-    default: "prisma-generator-example",
+    message: "package.json name:",
+    default: result.provider,
   });
 
   result.author = await input({
-    message: "Generator package author:",
+    message: "package.json author:",
     default: "John Doe",
   });
 
   result.version = await input({
-    message: "Generator package version:",
+    message: "package.json version:",
     default: "1.0.0",
   });
 
   result.description = await input({
-    message: "Generator package description:",
+    message: "package.json description:",
     default: "Prisma ORM Generator Example",
   });
 
   result.license = await input({
-    message: "Generator package license:",
+    message: "package.json license:",
     default: "MIT",
   });
 
   result.outputDirectoryRoot = await input({
-    message: "Generator output directory:",
+    message: "Output directory:",
     default: "../prisma-generator-example/",
   });
 
@@ -70,7 +68,7 @@ async function wizard() {
   return result;
 }
 
-wizard().then(async (config) => {
+configurator().then(async (config) => {
   const answer = await confirm({
     message: "Build new generator under " + config.outputDirectoryRoot + "?",
   });
@@ -78,7 +76,8 @@ wizard().then(async (config) => {
   if (answer) {
     PrismaGeneratorBuilder.build(config);
 
-    process.stdout.write("All Done.\n");
+    logger.info("All Done.");
+
     process.stdout.write("\n");
 
     process.stdout.write("Usage:\n");

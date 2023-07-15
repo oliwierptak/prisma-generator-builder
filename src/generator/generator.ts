@@ -19,7 +19,7 @@ generatorHandler({
 
     helloWorld.debugDataModel(
       options.dmmf.datamodel,
-      options.generator.output?.value || "./prisma-generator-generator"
+      options.generator.output?.value || "./prisma-generator-example"
     );
   },
 });
