@@ -32,7 +32,7 @@ npx prisma-generator-builder
 ```
 
 
-<p><img src="configurator.png" width="500" /></p>
+<p><img src="configurator.png" width="450" /></p>
 
 
 Switch to the output directory and run
@@ -42,7 +42,7 @@ npm install
 npx prisma run 
 ```
 
-<p><img src="generator.png" width="500" /></p>
+<p><img src="generator.png" width="520" /></p>
 
 That's it.
 
@@ -107,4 +107,4 @@ Generated package comes together with pre-configured `jest`.
 
 `npx jest`
 
-<p><img src="jest.png" width="400" /></p>
+<p><img src="jest.png" width="420" /></p>
