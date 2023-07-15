@@ -95,7 +95,7 @@ const config: PrismaGeneratorBuilderConfig = {
 ### Usage
 
 ```typescript
-import { PrismaGeneratorBuilder } from "@prisma-generator-builder";
+import { PrismaGeneratorBuilder, PrismaGeneratorBuilderConfig } from "@prisma-generator-builder";
 
 const config: PrismaGeneratorBuilderConfig = {
   provider: "provider",
