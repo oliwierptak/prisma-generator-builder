@@ -16,7 +16,6 @@ interface PrismaGeneratorBuilderPluginInterface {
 
 Plugin example that generates `example.ts` script.
 
-
 `plugin.example.ts`
 ```typescript
 class PluginExample
@@ -38,6 +37,7 @@ console.log("${template.prettyName}");
 console.log("Prisma Generator Example");
 ```
 
+See [abstract.plugin.ts here](src%2Fcomponent%2Fgenerator-plugin%2Fabstract.plugin.ts).
 
 ### Configuration options
 
@@ -104,9 +104,9 @@ const config: PrismaGeneratorBuilderConfig = {
   name: "prisma-generator-example",
   version: "1.0.0",
   author: "John Doe",
-  description: "Prisma ORM Builder",
+  description: "Prisma ORM Generator",
   license: "MIT",
-  outputDirectoryRoot: "./run",
+  outputDirectoryRoot: "./build",
   plugins: [
     new PluginBin(),
     new PluginGenerator(),
