@@ -1,11 +1,10 @@
 # prisma-generator-builder
 
-Creates simple and ready to run latest `prisma generator`.
 
-It has pluggable architecture, and new functionality can be easily provided with additional plugins.
-Read more about [builder plugins here](README_PLUGINS.md).
+Creates ready to run latest `prisma generator`.
 
-Together with preconfigured packages, it creates project ready for development.
+Together with pre-configured packages, and pluggable architecture,
+it creates project ready for prisma generator development.
 
 ### Preconfigured packages
 
@@ -14,6 +13,12 @@ Together with preconfigured packages, it creates project ready for development.
 - eslint
 - prettier
 - jest
+
+
+### Pluggable architecture
+
+Read more about [plugins here](README_PLUGINS.md).
+
 
 ## Installation
 

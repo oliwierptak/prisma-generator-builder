@@ -85,7 +85,9 @@ const config: PrismaGeneratorBuilderConfig = {
 ### Default plugins
 
 - `PluginBin` : generates `bin.ts` script
+- `PluginEnv` : generates `.env` file
 - `PluginGenerator` : generates `generator.ts` script
+- `PluginGitIgnore` : generates `.gitignore` file
 - `PluginPackageJson` : generates `package.json` file
 - `PluginPrismaSchema` : generates `schema.prisma` file
 - `PluginReadme` : generates `README.md` file
@@ -109,11 +111,13 @@ const config: PrismaGeneratorBuilderConfig = {
   outputDirectoryRoot: "./build",
   plugins: [
     new PluginBin(),
+    new PluginCopyFiles(),
+    new PluginEnv(),
     new PluginGenerator(),
+    new PluginGitIgnore(),
     new PluginPackageJson(),
     new PluginPrismaSchema(),
     new PluginReadme(),
-    new PluginCopyFiles(),
   ],
 };
 
