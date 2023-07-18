@@ -12,6 +12,7 @@
     "build": "npx tsc"
   },
   "files": [
+    "dist/*",
     "template/*"
   ],
   "postbundle": "copyfiles -a template/* dist/",
