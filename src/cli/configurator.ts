@@ -12,6 +12,8 @@ import {
   PrismaGeneratorBuilderConfig,
 } from "../prisma-generator-builder";
 import { logger } from "@prisma/internals";
+import PluginEnv from "../component/generator-plugin/plugin/plugin.env";
+import PluginGitIgnore from "../component/generator-plugin/plugin/plugin.git-ignore";
 
 async function configurator() {
   const result = {} as PrismaGeneratorBuilderConfig;
@@ -60,11 +62,13 @@ async function configurator() {
 
   result.plugins = [
     new PluginBin(),
+    new PluginCopyFiles(),
+    new PluginEnv(),
     new PluginGenerator(),
+    new PluginGitIgnore(),
     new PluginPackageJson(),
     new PluginPrismaSchema(),
     new PluginReadme(),
-    new PluginCopyFiles(),
   ];
 
   return result;

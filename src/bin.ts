@@ -9,6 +9,8 @@ import PluginPackageJson from "./component/generator-plugin/plugin/plugin.packag
 import PluginPrismaSchema from "./component/generator-plugin/plugin/plugin.prisma-schema";
 import PluginReadme from "./component/generator-plugin/plugin/plugin.readme";
 import { PluginCopyFiles } from "./component/generator-plugin/plugin/plugin.copy-files";
+import PluginEnv from "./component/generator-plugin/plugin/plugin.env";
+import PluginGitIgnore from "./component/generator-plugin/plugin/plugin.git-ignore";
 
 const config: PrismaGeneratorBuilderConfig = {
   provider: "prisma-generator-example",
@@ -22,11 +24,13 @@ const config: PrismaGeneratorBuilderConfig = {
   outputDirectoryRoot: "../prisma-generator-example/",
   plugins: [
     new PluginBin(),
+    new PluginCopyFiles(),
+    new PluginEnv(),
     new PluginGenerator(),
+    new PluginGitIgnore(),
     new PluginPackageJson(),
     new PluginPrismaSchema(),
     new PluginReadme(),
-    new PluginCopyFiles(),
   ],
 };
 

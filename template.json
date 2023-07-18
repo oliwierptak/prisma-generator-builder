@@ -1,9 +1,6 @@
 {
   "./": [
-    ".env",
     ".eslintrc.js",
-    ".gitignore",
-    ".npmrc",
     ".prettierrc",
     "jest.config.js",
     "tsconfig.json"

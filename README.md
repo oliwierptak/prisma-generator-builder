@@ -39,7 +39,7 @@ Switch to the output directory and run
 
 ```
 npm install
-npx prisma run 
+npx prisma generate 
 ```
 
 <p><img src="generator.png" width="520" /></p>
