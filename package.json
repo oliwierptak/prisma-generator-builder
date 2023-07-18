@@ -1,6 +1,6 @@
 {
   "name": "prisma-generator-builder",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Creates simple and ready to run prisma generator. It has pluggable architecture, and new functionality can be easily provided with additional plugins",
   "bin": {
     "prisma-generator-builder": "dist/src/cli/configurator.js"
